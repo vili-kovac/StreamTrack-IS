@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-2">
                 <select class="form-select" name="godina">
-                    <option value="">Sve godine</option>
+                    <option value="">Stanje do godine</option>
                     {% for g in filteri.godine %}
                     <option value="{{ g }}">{{ g }}</option>
                     {% endfor %}
@@ -51,7 +51,7 @@
             </div>
             <div class="col-md-2">
                 <select class="form-select" name="mjesec">
-                    <option value="">Svi mjeseci</option>
+                    <option value="">Stanje do mjeseca</option>
                     {% for m in filteri.mjeseci %}
                     <option value="{{ m }}">{{ m }}</option>
                     {% endfor %}
@@ -63,7 +63,6 @@
                     <option value="streamovi">Streamovi</option>
                     <option value="zarada">Zarada</option>
                     <option value="naslov">Naslov</option>
-                    <option value="godina">Godina</option>
                 </select>
             </div>
             <div class="col-md-1">
@@ -77,7 +76,6 @@
                     <tr>
                         <th>Naslov</th>
                         <th>Izvođač</th>
-                        <th>Godina</th>
                         <th>Streamovi po platformama</th>
                         <th>Ukupno</th>
                         <th>Zarada (€)</th>
@@ -90,7 +88,6 @@
                     <tr>
                         <td>{{ pjesma.naslov }}</td>
                         <td>{{ pjesma.izvodac }}</td>
-                        <td>{{ pjesma.godina }}</td>
                         <td>
                             {% for p in pjesma.platforme %}
                             <div>{{ p }}</div>
@@ -108,7 +105,7 @@
                     </tr>
 
                     <tr id="uredi-{{ pjesma.id }}" style="display:none;">
-                        <td colspan="8">
+                        <td colspan="7">
                             <div class="row g-2">
                                 <div class="col-md-2">
                                     <input class="form-control form-control-sm" id="naslov-{{ pjesma.id }}"
@@ -117,10 +114,6 @@
                                 <div class="col-md-2">
                                     <input class="form-control form-control-sm" id="izvodac-{{ pjesma.id }}"
                                         value="{{ pjesma.izvodac }}">
-                                </div>
-                                <div class="col-md-1">
-                                    <input type="number" class="form-control form-control-sm"
-                                        id="godina-{{ pjesma.id }}" value="{{ pjesma.godina }}">
                                 </div>
                                 <div class="col-md-2">
                                     <select class="form-select form-select-sm" id="platforma-{{ pjesma.id }}">
@@ -186,7 +179,6 @@
                 body: JSON.stringify({
                     naslov: document.getElementById("naslov-" + id).value,
                     izvodac: document.getElementById("izvodac-" + id).value,
-                    godina: document.getElementById("godina-" + id).value,
                     platforma: platforma,
                     broj_streamova: document.getElementById("broj_streamova-" + id).value,
                     zarada_po_streamu: zarada_po_streamu,

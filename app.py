@@ -12,12 +12,10 @@ class Pjesma(db.Entity):
     id = orm.PrimaryKey(int, auto=True)
     naslov = orm.Required(str)
     izvodac = orm.Required(str)
-    datum_izrade = orm.Required(datetime)
-    godina = orm.Required(int)
     metrike = orm.Set("Metrika")
 
 
-# druga tablica - podaci o streamovima 
+# druga tablica - podaci o streamovima
 class Metrika(db.Entity):
     id = orm.PrimaryKey(int, auto=True)
     platforma = orm.Required(str)
@@ -75,7 +73,6 @@ def slozi_pjesmu(pjesma, metrike):
         m = zadnje[platforma]
         ukupno_streamova += m.broj_streamova
         ukupna_zarada += m.broj_streamova * m.zarada_po_streamu
-
         tekst = platforma + ": " + str(m.broj_streamova)
         tekst += " (" + m.datum_izmjene.strftime("%d.%m.%Y.") + ")"
         platforme.append(tekst)
@@ -84,7 +81,6 @@ def slozi_pjesmu(pjesma, metrike):
         "id": pjesma.id,
         "naslov": pjesma.naslov,
         "izvodac": pjesma.izvodac,
-        "godina": pjesma.godina,
         "platforme": platforme,
         "ukupno_streamova": ukupno_streamova,
         "ukupna_zarada": round(ukupna_zarada, 2),
@@ -118,6 +114,24 @@ def get_filtere():
     }
 
 
+# granica za povijesni filter
+def granica_filtera(godina, mjesec):
+    if not godina:
+        return None
+
+    godina = int(godina)
+
+    if not mjesec:
+        return datetime(godina + 1, 1, 1)
+
+    mjesec = int(mjesec)
+
+    if mjesec == 12:
+        return datetime(godina + 1, 1, 1)
+
+    return datetime(godina, mjesec + 1, 1)
+
+
 # ruta za dodavanje nove pjesme
 @app.route("/dodaj/pjesmu", methods=["POST", "GET"])
 def dodaj_pjesmu():
@@ -130,9 +144,7 @@ def dodaj_pjesmu():
         with orm.db_session:
             pjesma = Pjesma(
                 naslov=podaci["naslov"],
-                izvodac=podaci["izvodac"],
-                datum_izrade=datetime.now(),
-                godina=int(podaci["godina"])
+                izvodac=podaci["izvodac"]
             )
 
             dodaj_metriku(pjesma, podaci)
@@ -151,6 +163,7 @@ def vrati_pjesme():
     godina = request.args.get("godina", "")
     mjesec = request.args.get("mjesec", "")
     sortiranje = request.args.get("sort", "")
+    granica = granica_filtera(godina, mjesec)
     data = []
 
     try:
@@ -164,14 +177,12 @@ def vrati_pjesme():
                 for m in pjesma.metrike:
                     if platforma and m.platforma != platforma:
                         continue
-                    if godina and m.datum_izmjene.year != int(godina):
-                        continue
-                    if mjesec and m.datum_izmjene.month != int(mjesec):
+                    if granica and m.datum_izmjene >= granica:
                         continue
 
                     metrike.append(m)
 
-                if (platforma or godina or mjesec) and len(metrike) == 0:
+                if (platforma or granica) and len(metrike) == 0:
                     continue
 
                 data.append(slozi_pjesmu(pjesma, metrike))
@@ -182,8 +193,6 @@ def vrati_pjesme():
                 data.sort(key=lambda x: x["ukupna_zarada"], reverse=True)
             if sortiranje == "naslov":
                 data.sort(key=lambda x: x["naslov"])
-            if sortiranje == "godina":
-                data.sort(key=lambda x: x["godina"], reverse=True)
 
         return make_response(render_template("popis_pjesama.html", data=data, filteri=get_filtere()), 200)
 
@@ -196,50 +205,38 @@ def vrati_pjesme():
 def vizualizacija():
     top_pjesme = []
     zarada_po_platformi = {}
-    podaci_po_mjesecu = {}
     streamovi_po_vremenu = {}
 
     try:
         with orm.db_session:
-            # prvi graf - top 5 pjesama po zadnjem stanju streamova
+            # prvi graf - top 5 pjesama po istom izracunu kao u tablici
             for pjesma in orm.select(p for p in Pjesma)[:]:
+                podaci_pjesme = slozi_pjesmu(pjesma, pjesma.metrike)
                 zadnje = zadnje_po_platformi(pjesma.metrike)
-                ukupno = 0
+
+                top_pjesme.append({
+                    "naslov": podaci_pjesme["naslov"],
+                    "streamovi": podaci_pjesme["ukupno_streamova"]
+                })
 
                 for platforma in zadnje:
                     m = zadnje[platforma]
-                    ukupno += m.broj_streamova
 
                     if m.platforma not in zarada_po_platformi:
                         zarada_po_platformi[m.platforma] = 0
 
                     zarada_po_platformi[m.platforma] += m.broj_streamova * m.zarada_po_streamu
 
-                top_pjesme.append({
-                    "naslov": pjesma.naslov,
-                    "streamovi": ukupno
-                })
+            # treci graf - stanje streamova kroz vrijeme
+            zadnje_stanje = {}
+            metrike = orm.select(m for m in Metrika)[:]
+            metrike.sort(key=lambda m: m.datum_izmjene)
 
-            # treci graf - streamovi po mjesecima, zadnji unos u tom mjesecu
-            for m in orm.select(m for m in Metrika)[:]:
+            for m in metrike:
                 mjesec = m.datum_izmjene.strftime("%Y-%m")
                 kljuc = str(m.pjesma.id) + "-" + m.platforma
-
-                if mjesec not in podaci_po_mjesecu:
-                    podaci_po_mjesecu[mjesec] = {}
-
-                if kljuc not in podaci_po_mjesecu[mjesec]:
-                    podaci_po_mjesecu[mjesec][kljuc] = m
-                elif m.datum_izmjene > podaci_po_mjesecu[mjesec][kljuc].datum_izmjene:
-                    podaci_po_mjesecu[mjesec][kljuc] = m
-
-            for mjesec in podaci_po_mjesecu:
-                ukupno = 0
-
-                for kljuc in podaci_po_mjesecu[mjesec]:
-                    ukupno += podaci_po_mjesecu[mjesec][kljuc].broj_streamova
-
-                streamovi_po_vremenu[mjesec] = ukupno
+                zadnje_stanje[kljuc] = m
+                streamovi_po_vremenu[mjesec] = sum(x.broj_streamova for x in zadnje_stanje.values())
 
         top_pjesme.sort(key=lambda x: x["streamovi"], reverse=True)
         top_pjesme = top_pjesme[:5]
@@ -289,9 +286,6 @@ def izmjeni_pjesmu(pjesma_id):
                 pjesma.naslov = podaci["naslov"]
             if "izvodac" in podaci:
                 pjesma.izvodac = podaci["izvodac"]
-            if "godina" in podaci:
-                pjesma.godina = int(podaci["godina"])
-
             if "platforma" in podaci and podaci.get("broj_streamova"):
                 dodaj_metriku(pjesma, podaci)
 
@@ -337,9 +331,7 @@ def ubaci_pocetne_podatke():
     for p_data in pjesme_lista:
         pjesma = Pjesma(
             naslov=p_data["naslov"],
-            izvodac=p_data["izvodac"],
-            datum_izrade=procitaj_datum(p_data.get("datum_izrade")),
-            godina=int(p_data["godina"])
+            izvodac=p_data["izvodac"]
         )
 
         for m_data in p_data["metrike"]:
