@@ -7,14 +7,32 @@
         "metrike": [
             {
                 "platforma": "Spotify",
-                "broj_streamova": 216000,
+                "broj_streamova": 150000,
                 "datum_izmjene": "2024-01-15",
                 "zarada_po_streamu": 0.004
             },
             {
+                "platforma": "Spotify",
+                "broj_streamova": 420000,
+                "datum_izmjene": "2024-06-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 860000,
+                "datum_izmjene": "2024-12-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
                 "platforma": "YouTube",
-                "broj_streamova": 350000,
-                "datum_izmjene": "2024-02-15",
+                "broj_streamova": 210000,
+                "datum_izmjene": "2024-03-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 740000,
+                "datum_izmjene": "2024-12-20",
                 "zarada_po_streamu": 0.001
             }
         ]
@@ -27,14 +45,26 @@
         "metrike": [
             {
                 "platforma": "Spotify",
-                "broj_streamova": 81000,
+                "broj_streamova": 80000,
                 "datum_izmjene": "2024-02-15",
                 "zarada_po_streamu": 0.004
             },
             {
+                "platforma": "Spotify",
+                "broj_streamova": 160000,
+                "datum_izmjene": "2024-08-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
                 "platforma": "YouTube",
-                "broj_streamova": 80000,
-                "datum_izmjene": "2024-03-15",
+                "broj_streamova": 90000,
+                "datum_izmjene": "2024-04-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 230000,
+                "datum_izmjene": "2024-09-15",
                 "zarada_po_streamu": 0.001
             }
         ]
@@ -47,14 +77,26 @@
         "metrike": [
             {
                 "platforma": "Spotify",
-                "broj_streamova": 378000,
+                "broj_streamova": 180000,
                 "datum_izmjene": "2023-03-15",
                 "zarada_po_streamu": 0.004
             },
             {
+                "platforma": "Spotify",
+                "broj_streamova": 360000,
+                "datum_izmjene": "2023-10-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
                 "platforma": "Apple Music",
-                "broj_streamova": 75000,
-                "datum_izmjene": "2023-04-15",
+                "broj_streamova": 35000,
+                "datum_izmjene": "2023-05-15",
+                "zarada_po_streamu": 0.007
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 82000,
+                "datum_izmjene": "2023-12-15",
                 "zarada_po_streamu": 0.007
             }
         ]
@@ -67,9 +109,21 @@
         "metrike": [
             {
                 "platforma": "YouTube",
-                "broj_streamova": 150000,
+                "broj_streamova": 70000,
                 "datum_izmjene": "2022-04-15",
                 "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 150000,
+                "datum_izmjene": "2022-11-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 45000,
+                "datum_izmjene": "2022-06-15",
+                "zarada_po_streamu": 0.004
             }
         ]
     },
@@ -81,14 +135,26 @@
         "metrike": [
             {
                 "platforma": "Spotify",
-                "broj_streamova": 171000,
-                "datum_izmjene": "2025-05-15",
+                "broj_streamova": 120000,
+                "datum_izmjene": "2025-01-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 350000,
+                "datum_izmjene": "2025-07-15",
                 "zarada_po_streamu": 0.004
             },
             {
                 "platforma": "YouTube",
-                "broj_streamova": 400000,
-                "datum_izmjene": "2025-06-15",
+                "broj_streamova": 220000,
+                "datum_izmjene": "2025-02-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 640000,
+                "datum_izmjene": "2025-08-15",
                 "zarada_po_streamu": 0.001
             }
         ]
@@ -104,6 +170,18 @@
                 "broj_streamova": 14000,
                 "datum_izmjene": "2024-06-15",
                 "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 52000,
+                "datum_izmjene": "2024-12-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 9000,
+                "datum_izmjene": "2024-12-20",
+                "zarada_po_streamu": 0.007
             }
         ]
     },
@@ -115,14 +193,26 @@
         "metrike": [
             {
                 "platforma": "Spotify",
+                "broj_streamova": 130000,
+                "datum_izmjene": "2024-07-05",
+                "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
                 "broj_streamova": 234000,
-                "datum_izmjene": "2024-07-15",
+                "datum_izmjene": "2024-07-20",
                 "zarada_po_streamu": 0.004
             },
             {
                 "platforma": "YouTube",
+                "broj_streamova": 120000,
+                "datum_izmjene": "2024-08-05",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
                 "broj_streamova": 250000,
-                "datum_izmjene": "2024-08-15",
+                "datum_izmjene": "2024-08-25",
                 "zarada_po_streamu": 0.001
             }
         ]
@@ -138,6 +228,18 @@
                 "broj_streamova": 30000,
                 "datum_izmjene": "2023-08-15",
                 "zarada_po_streamu": 0.007
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 72000,
+                "datum_izmjene": "2024-02-15",
+                "zarada_po_streamu": 0.007
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 110000,
+                "datum_izmjene": "2024-02-20",
+                "zarada_po_streamu": 0.004
             }
         ]
     },
@@ -149,13 +251,25 @@
         "metrike": [
             {
                 "platforma": "Spotify",
+                "broj_streamova": 250000,
+                "datum_izmjene": "2025-03-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
                 "broj_streamova": 558000,
                 "datum_izmjene": "2025-09-15",
                 "zarada_po_streamu": 0.004
             },
             {
                 "platforma": "YouTube",
-                "broj_streamova": 600000,
+                "broj_streamova": 330000,
+                "datum_izmjene": "2025-04-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 900000,
                 "datum_izmjene": "2025-10-15",
                 "zarada_po_streamu": 0.001
             }
@@ -172,6 +286,12 @@
                 "broj_streamova": 27000,
                 "datum_izmjene": "2023-10-15",
                 "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 79000,
+                "datum_izmjene": "2024-04-15",
+                "zarada_po_streamu": 0.004
             }
         ]
     },
@@ -183,13 +303,25 @@
         "metrike": [
             {
                 "platforma": "Spotify",
-                "broj_streamova": 324000,
+                "broj_streamova": 210000,
+                "datum_izmjene": "2024-04-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 620000,
                 "datum_izmjene": "2024-11-15",
                 "zarada_po_streamu": 0.004
             },
             {
                 "platforma": "YouTube",
-                "broj_streamova": 900000,
+                "broj_streamova": 380000,
+                "datum_izmjene": "2024-06-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 1450000,
                 "datum_izmjene": "2024-12-15",
                 "zarada_po_streamu": 0.001
             }
@@ -203,14 +335,26 @@
         "metrike": [
             {
                 "platforma": "Spotify",
+                "broj_streamova": 180000,
+                "datum_izmjene": "2025-01-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
                 "broj_streamova": 450000,
                 "datum_izmjene": "2025-12-15",
                 "zarada_po_streamu": 0.004
             },
             {
                 "platforma": "Apple Music",
+                "broj_streamova": 40000,
+                "datum_izmjene": "2025-05-15",
+                "zarada_po_streamu": 0.007
+            },
+            {
+                "platforma": "Apple Music",
                 "broj_streamova": 100000,
-                "datum_izmjene": "2025-01-15",
+                "datum_izmjene": "2025-12-20",
                 "zarada_po_streamu": 0.007
             }
         ]
@@ -225,6 +369,12 @@
                 "platforma": "YouTube",
                 "broj_streamova": 75000,
                 "datum_izmjene": "2022-01-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 180000,
+                "datum_izmjene": "2023-01-15",
                 "zarada_po_streamu": 0.001
             }
         ]
@@ -242,9 +392,21 @@
                 "zarada_po_streamu": 0.004
             },
             {
+                "platforma": "Spotify",
+                "broj_streamova": 260000,
+                "datum_izmjene": "2024-10-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
                 "platforma": "YouTube",
                 "broj_streamova": 120000,
                 "datum_izmjene": "2024-03-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 330000,
+                "datum_izmjene": "2024-10-20",
                 "zarada_po_streamu": 0.001
             }
         ]
@@ -260,6 +422,12 @@
                 "broj_streamova": 189000,
                 "datum_izmjene": "2024-03-15",
                 "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 510000,
+                "datum_izmjene": "2024-09-15",
+                "zarada_po_streamu": 0.004
             }
         ]
     },
@@ -274,6 +442,18 @@
                 "broj_streamova": 36000,
                 "datum_izmjene": "2021-04-15",
                 "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 99000,
+                "datum_izmjene": "2022-04-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 120000,
+                "datum_izmjene": "2022-05-15",
+                "zarada_po_streamu": 0.001
             }
         ]
     },
@@ -285,14 +465,26 @@
         "metrike": [
             {
                 "platforma": "Spotify",
-                "broj_streamova": 612000,
+                "broj_streamova": 300000,
                 "datum_izmjene": "2025-05-15",
                 "zarada_po_streamu": 0.004
             },
             {
+                "platforma": "Spotify",
+                "broj_streamova": 700000,
+                "datum_izmjene": "2025-11-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
                 "platforma": "YouTube",
-                "broj_streamova": 800000,
+                "broj_streamova": 420000,
                 "datum_izmjene": "2025-06-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 1100000,
+                "datum_izmjene": "2025-12-15",
                 "zarada_po_streamu": 0.001
             }
         ]
@@ -308,6 +500,18 @@
                 "broj_streamova": 190000,
                 "datum_izmjene": "2023-06-15",
                 "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 450000,
+                "datum_izmjene": "2024-06-15",
+                "zarada_po_streamu": 0.001
+            },
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 160000,
+                "datum_izmjene": "2024-06-20",
+                "zarada_po_streamu": 0.004
             }
         ]
     },
@@ -324,9 +528,21 @@
                 "zarada_po_streamu": 0.004
             },
             {
+                "platforma": "Spotify",
+                "broj_streamova": 570000,
+                "datum_izmjene": "2024-12-15",
+                "zarada_po_streamu": 0.004
+            },
+            {
                 "platforma": "Apple Music",
                 "broj_streamova": 62000,
                 "datum_izmjene": "2024-08-15",
+                "zarada_po_streamu": 0.007
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 150000,
+                "datum_izmjene": "2024-12-20",
                 "zarada_po_streamu": 0.007
             }
         ]
@@ -342,351 +558,17 @@
                 "broj_streamova": 16000,
                 "datum_izmjene": "2024-08-15",
                 "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Staklene maske",
-        "izvodac": "Jacques Houdek",
-        "datum_izrade": "2025-01-01",
-        "godina": 2025,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 288000,
-                "datum_izmjene": "2025-09-15",
-                "zarada_po_streamu": 0.004
             },
             {
-                "platforma": "YouTube",
-                "broj_streamova": 300000,
-                "datum_izmjene": "2025-10-15",
-                "zarada_po_streamu": 0.001
-            }
-        ]
-    },
-    {
-        "naslov": "Novi početak",
-        "izvodac": "Matija Cvek",
-        "datum_izrade": "2020-01-01",
-        "godina": 2020,
-        "metrike": [
-            {
                 "platforma": "Spotify",
-                "broj_streamova": 90000,
-                "datum_izmjene": "2020-10-15",
-                "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Zadnji ples",
-        "izvodac": "Marko Tolja",
-        "datum_izrade": "2024-01-01",
-        "godina": 2024,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 252000,
-                "datum_izmjene": "2024-11-15",
-                "zarada_po_streamu": 0.004
-            },
-            {
-                "platforma": "YouTube",
-                "broj_streamova": 500000,
-                "datum_izmjene": "2024-12-15",
-                "zarada_po_streamu": 0.001
-            }
-        ]
-    },
-    {
-        "naslov": "Ostavljeni u jeci",
-        "izvodac": "Damir Kedžo",
-        "datum_izrade": "2023-01-01",
-        "godina": 2023,
-        "metrike": [
-            {
-                "platforma": "YouTube",
-                "broj_streamova": 85000,
-                "datum_izmjene": "2023-12-15",
-                "zarada_po_streamu": 0.001
-            }
-        ]
-    },
-    {
-        "naslov": "Nevidljive niti",
-        "izvodac": "Tony Cetinski",
-        "datum_izrade": "2022-01-01",
-        "godina": 2022,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 396000,
-                "datum_izmjene": "2022-01-15",
-                "zarada_po_streamu": 0.004
-            },
-            {
-                "platforma": "Apple Music",
-                "broj_streamova": 125000,
-                "datum_izmjene": "2022-02-15",
-                "zarada_po_streamu": 0.007
-            }
-        ]
-    },
-    {
-        "naslov": "Kroz tvoje oči",
-        "izvodac": "Vanna",
-        "datum_izrade": "2024-01-01",
-        "godina": 2024,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 13000,
-                "datum_izmjene": "2024-02-15",
-                "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Sve što ostaje",
-        "izvodac": "Nina Badrić",
-        "datum_izrade": "2024-01-01",
-        "godina": 2024,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 158000,
-                "datum_izmjene": "2024-03-15",
-                "zarada_po_streamu": 0.004
-            },
-            {
-                "platforma": "YouTube",
-                "broj_streamova": 190000,
-                "datum_izmjene": "2024-04-15",
-                "zarada_po_streamu": 0.001
-            }
-        ]
-    },
-    {
-        "naslov": "Mirna luka",
-        "izvodac": "Jacques Houdek",
-        "datum_izrade": "2023-01-01",
-        "godina": 2023,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 234000,
-                "datum_izmjene": "2023-04-15",
-                "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Puls noći",
-        "izvodac": "Matija Cvek",
-        "datum_izrade": "2024-01-01",
-        "godina": 2024,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 225000,
-                "datum_izmjene": "2024-05-15",
-                "zarada_po_streamu": 0.004
-            },
-            {
-                "platforma": "YouTube",
-                "broj_streamova": 410000,
-                "datum_izmjene": "2024-06-15",
-                "zarada_po_streamu": 0.001
-            }
-        ]
-    },
-    {
-        "naslov": "U tvojim cipelama",
-        "izvodac": "Marko Tolja",
-        "datum_izrade": "2025-01-01",
-        "godina": 2025,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 522000,
-                "datum_izmjene": "2025-06-15",
-                "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Slijepi putnik",
-        "izvodac": "Damir Kedžo",
-        "datum_izrade": "2024-01-01",
-        "godina": 2024,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 9000,
-                "datum_izmjene": "2024-07-15",
-                "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Strah od letenja",
-        "izvodac": "Tony Cetinski",
-        "datum_izrade": "2024-01-01",
-        "godina": 2024,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 135000,
-                "datum_izmjene": "2024-08-15",
-                "zarada_po_streamu": 0.004
-            },
-            {
-                "platforma": "YouTube",
-                "broj_streamova": 220000,
-                "datum_izmjene": "2024-09-15",
-                "zarada_po_streamu": 0.001
-            }
-        ]
-    },
-    {
-        "naslov": "Tiha predaja",
-        "izvodac": "Vanna",
-        "datum_izrade": "2023-01-01",
-        "godina": 2023,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 351000,
-                "datum_izmjene": "2023-09-15",
-                "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Na pola puta",
-        "izvodac": "Nina Badrić",
-        "datum_izrade": "2024-01-01",
-        "godina": 2024,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 612000,
-                "datum_izmjene": "2024-10-15",
-                "zarada_po_streamu": 0.004
-            },
-            {
-                "platforma": "YouTube",
-                "broj_streamova": 700000,
-                "datum_izmjene": "2024-11-15",
-                "zarada_po_streamu": 0.001
-            },
-            {
-                "platforma": "Apple Music",
-                "broj_streamova": 150000,
-                "datum_izmjene": "2024-12-15",
-                "zarada_po_streamu": 0.007
-            }
-        ]
-    },
-    {
-        "naslov": "Zadnji krug",
-        "izvodac": "Jacques Houdek",
-        "datum_izrade": "2026-01-01",
-        "godina": 2026,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 27000,
-                "datum_izmjene": "2026-11-15",
-                "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Kula od pijeska",
-        "izvodac": "Matija Cvek",
-        "datum_izrade": "2025-01-01",
-        "godina": 2025,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 369000,
-                "datum_izmjene": "2025-12-15",
-                "zarada_po_streamu": 0.004
-            },
-            {
-                "platforma": "YouTube",
-                "broj_streamova": 550000,
+                "broj_streamova": 43000,
                 "datum_izmjene": "2025-01-15",
-                "zarada_po_streamu": 0.001
-            }
-        ]
-    },
-    {
-        "naslov": "Bezizlazno",
-        "izvodac": "Marko Tolja",
-        "datum_izrade": "2024-01-01",
-        "godina": 2024,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 112000,
-                "datum_izmjene": "2024-01-15",
-                "zarada_po_streamu": 0.004
-            }
-        ]
-    },
-    {
-        "naslov": "Na rubu usana",
-        "izvodac": "Damir Kedžo",
-        "datum_izrade": "2025-01-01",
-        "godina": 2025,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 198000,
-                "datum_izmjene": "2025-02-15",
                 "zarada_po_streamu": 0.004
             },
             {
                 "platforma": "YouTube",
-                "broj_streamova": 320000,
-                "datum_izmjene": "2025-03-15",
-                "zarada_po_streamu": 0.001
-            }
-        ]
-    },
-    {
-        "naslov": "Samo tvoj",
-        "izvodac": "Tony Cetinski",
-        "datum_izrade": "2023-01-01",
-        "godina": 2023,
-        "metrike": [
-            {
-                "platforma": "Apple Music",
-                "broj_streamova": 24000,
-                "datum_izmjene": "2023-03-15",
-                "zarada_po_streamu": 0.007
-            }
-        ]
-    },
-    {
-        "naslov": "Vatreni zid",
-        "izvodac": "Vanna",
-        "datum_izrade": "2025-01-01",
-        "godina": 2025,
-        "metrike": [
-            {
-                "platforma": "Spotify",
-                "broj_streamova": 756000,
-                "datum_izmjene": "2025-04-15",
-                "zarada_po_streamu": 0.004
-            },
-            {
-                "platforma": "YouTube",
-                "broj_streamova": 1100000,
-                "datum_izmjene": "2025-05-15",
+                "broj_streamova": 70000,
+                "datum_izmjene": "2025-01-20",
                 "zarada_po_streamu": 0.001
             }
         ]

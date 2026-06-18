@@ -33,7 +33,6 @@
             <div class="col-md-3">
                 <input class="form-control" name="q" placeholder="Naslov ili izvođač">
             </div>
-
             <div class="col-md-2">
                 <select class="form-select" name="platforma">
                     <option value="">Sve platforme</option>
@@ -42,7 +41,6 @@
                     {% endfor %}
                 </select>
             </div>
-
             <div class="col-md-2">
                 <select class="form-select" name="godina">
                     <option value="">Sve godine</option>
@@ -51,7 +49,6 @@
                     {% endfor %}
                 </select>
             </div>
-
             <div class="col-md-2">
                 <select class="form-select" name="mjesec">
                     <option value="">Svi mjeseci</option>
@@ -60,7 +57,6 @@
                     {% endfor %}
                 </select>
             </div>
-
             <div class="col-md-2">
                 <select class="form-select" name="sort">
                     <option value="">Bez sortiranja</option>
@@ -70,7 +66,6 @@
                     <option value="godina">Godina</option>
                 </select>
             </div>
-
             <div class="col-md-1">
                 <button class="btn btn-primary w-100" type="submit">OK</button>
             </div>
@@ -90,24 +85,20 @@
                         <th>Akcije</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     {% for pjesma in data %}
                     <tr>
                         <td>{{ pjesma.naslov }}</td>
                         <td>{{ pjesma.izvodac }}</td>
                         <td>{{ pjesma.godina }}</td>
-
                         <td>
                             {% for p in pjesma.platforme %}
                             <div>{{ p }}</div>
                             {% endfor %}
                         </td>
-
                         <td>{{ pjesma.ukupno_streamova }}</td>
                         <td>{{ pjesma.ukupna_zarada }}</td>
                         <td>{{ pjesma.viralnost }}</td>
-
                         <td>
                             <button class="btn btn-sm btn-warning"
                                 onclick="prikaziUredi('{{ pjesma.id }}')">Uredi</button>
@@ -123,17 +114,14 @@
                                     <input class="form-control form-control-sm" id="naslov-{{ pjesma.id }}"
                                         value="{{ pjesma.naslov }}">
                                 </div>
-
                                 <div class="col-md-2">
                                     <input class="form-control form-control-sm" id="izvodac-{{ pjesma.id }}"
                                         value="{{ pjesma.izvodac }}">
                                 </div>
-
                                 <div class="col-md-1">
                                     <input type="number" class="form-control form-control-sm"
                                         id="godina-{{ pjesma.id }}" value="{{ pjesma.godina }}">
                                 </div>
-
                                 <div class="col-md-2">
                                     <select class="form-select form-select-sm" id="platforma-{{ pjesma.id }}">
                                         <option value="Spotify">Spotify</option>
@@ -141,17 +129,14 @@
                                         <option value="Apple Music">Apple Music</option>
                                     </select>
                                 </div>
-
                                 <div class="col-md-2">
-                                    <input type="number" min="0" max="2147483647" class="form-control form-control-sm"
-                                        id="broj_streamova-{{ pjesma.id }}" placeholder="Novi streamovi">
+                                    <input type="number" min="0" class="form-control form-control-sm"
+                                        id="broj_streamova-{{ pjesma.id }}" placeholder="Stanje streamova">
                                 </div>
-
                                 <div class="col-md-2">
                                     <input type="date" class="form-control form-control-sm"
                                         id="datum_izmjene-{{ pjesma.id }}">
                                 </div>
-
                                 <div class="col-md-1">
                                     <button class="btn btn-sm btn-success w-100"
                                         onclick="spremiPjesmu('{{ pjesma.id }}')">Spremi</button>

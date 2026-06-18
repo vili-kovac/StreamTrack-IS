@@ -24,6 +24,7 @@
 
     <div class="container main-box">
         <h2>Dodaj novu pjesmu</h2>
+
         {% if greska %}
         <div class="alert alert-danger">
             {{ greska }}
@@ -35,6 +36,7 @@
             {{ poruka }}
         </div>
         {% endif %}
+
         <form method="post">
             <div class="mb-3">
                 <label class="form-label">Naslov pjesme:</label>
@@ -52,11 +54,6 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Datum izrade:</label>
-                <input type="date" class="form-control" name="datum_izrade" required>
-            </div>
-
-            <div class="mb-3">
                 <label class="form-label">Platforma:</label>
                 <select class="form-select" name="platforma" id="platforma" onchange="postaviZaradu()" required>
                     <option value="Spotify">Spotify</option>
@@ -66,7 +63,7 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Početni broj streamova:</label>
+                <label class="form-label">Broj streamova na dan zapisa:</label>
                 <input type="number" class="form-control" name="broj_streamova" min="0" required>
             </div>
 
@@ -78,7 +75,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Datum zapisa streamova:</label>
-                <input type="date" class="form-control" name="datum_izmjene" required>
+                <input type="date" class="form-control" name="datum_izmjene">
             </div>
 
             <button type="submit" class="btn btn-success">Spremi pjesmu</button>
@@ -91,13 +88,15 @@
             let platforma = document.getElementById("platforma").value;
             let zarada = document.getElementById("zarada_po_streamu");
 
-            if (platforma === "Spotify") {
+            if (platforma == "Spotify") {
                 zarada.value = 0.004;
             }
-            if (platforma === "YouTube") {
+
+            if (platforma == "YouTube") {
                 zarada.value = 0.001;
             }
-            if (platforma === "Apple Music") {
+
+            if (platforma == "Apple Music") {
                 zarada.value = 0.007;
             }
         }
