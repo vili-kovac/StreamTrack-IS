@@ -2,17 +2,56 @@
 
 Aplikacija omogućuje nositelju glazbenih prava praćenje streamova i izračun procijenjenih tantijema za pjesme na različitim streaming platformama.
 
-Tijekom izrade početni model baze je pojednostavljen jer se pokazalo da je za ovu aplikaciju važnije pratiti povijesno stanje streamova po platformama nego čuvati dodatne podatke koji se ne koriste u funkcionalnostima aplikacije. Zbog toga se pjesma sprema samo s osnovnim podacima, dok se svi podaci o streamovima i zaradi spremaju kroz zasebne zapise metrika.
+Tijekom razrade projekta početni model baze je promijenjen jer se pokazalo da je za ovu aplikaciju važnije pratiti povijesno stanje streamova po platformama nego čuvati dodatne podatke koji se ne koriste u funkcionalnostima aplikacije. Zbog toga se pjesma sprema samo s osnovnim podacima, dok se svi podaci o streamovima i zaradi spremaju kroz zasebne zapise metrika.
 
 U stvarnom svijetu izračun zarade od streamova je složeniji jer izdavačke kuće, distributeri, tržišta, tip korisničke pretplate i drugi faktori mogu utjecati na konačan iznos tantijema. U ovoj aplikaciji koristi se pojednostavljeni model koji računa procijenjenu zaradu pomoću prosječne zarade po streamu za pojedinu platformu.
 
-## Struktura aplikacije
+## Use case
 
-Na početnoj stranici korisnik može pristupiti glavnim dijelovima aplikacije:
+Use case dijagram prikazuje glavne funkcionalnosti aplikacije iz perspektive nositelja glazbenih prava.
 
-* popisu pjesama
-* dodavanju nove pjesme
-* vizualizaciji podataka
+![Use case dijagram](UseCase.jpeg)
+
+## Pokretanje aplikacije
+
+Aplikacija se može pokrenuti lokalno pomoću Docker-a.
+
+### 1. Kloniranje repozitorija
+
+```bash
+git clone https://github.com/korisnicko-ime/streamtrack.git
+cd streamtrack
+```
+
+### 2. Izrada Docker image-a
+
+```bash
+docker build -t streamtrack:1.0 .
+```
+
+### 3. Pokretanje aplikacije
+
+```bash
+docker run -p 5001:8080 streamtrack:1.0
+```
+
+### 4. Otvaranje aplikacije
+
+Nakon pokretanja aplikacija je dostupna u pregledniku na adresi:
+
+```text
+http://localhost:5001
+```
+
+## Tehnologije
+
+* Backend: Python, Flask, PonyORM, SQLite
+* Frontend: HTML, CSS, Bootstrap
+* Vizualizacija podataka: Chart.js
+* Baza podataka: SQLite
+* Docker: Dockerfile
+
+## Funkcionalnosti
 
 Aplikacija podržava osnovne CRUD operacije:
 
@@ -22,6 +61,12 @@ READ   → pregled popisa pjesama, streamova, zarade i grafova
 UPDATE → uređivanje naziva/izvođača pjesme i dodavanje novog zapisa streamova
 DELETE → brisanje pjesme i svih njezinih zapisa streamova
 ```
+
+Na početnoj stranici korisnik može pristupiti glavnim dijelovima aplikacije:
+
+* popisu pjesama
+* dodavanju nove pjesme
+* vizualizaciji podataka
 
 ## Model podataka
 
@@ -90,7 +135,7 @@ Filter godine i mjeseca ne prikazuje samo zapise unesene točno u tom mjesecu, n
 
 Na primjer, ako pjesma ima zapis u siječnju i ožujku, a korisnik filtrira veljaču, prikazat će se stanje iz siječnja. Ako korisnik filtrira travanj, prikazat će se stanje iz ožujka.
 
-Takva logika bolje odgovara stvarnom praćenju streamova jer korisnika ne zanima samo kada je podatak unesen, nego kakvo je bilo zadnje poznato stanje u određenom trenutku.
+Takva logika bolje odgovara praćenju streamova jer korisnika ne zanima samo kada je podatak unesen, nego kakvo je bilo zadnje poznato stanje u određenom trenutku.
 
 ## Vizualizacija
 
@@ -116,4 +161,9 @@ Treći graf prikazuje promjenu ukupnog stanja streamova kroz vrijeme. Za svaki m
 
 Aplikacija ne računa stvarne tantijeme s obzirom na sve uvjete koji postoje u glazbenoj industriji. Cilj aplikacije je omogućiti jednostavnu evidenciju streamova i procjenu zarade na temelju prosječne zarade po streamu za pojedinu platformu.
 
-Zbog toga je model namjerno pojednostavljen i prilagođen funkcionalnostima koje aplikacija stvarno koristi.
+U praksi se tantijemi često obračunavaju i isplaćuju periodično, primjerice na mjesečnoj ili godišnjoj razini. Za precizan obračun zarade po pojedinoj godini bilo bi potrebno kontinuirano pratiti stvarni broj novih streamova u svakom obračunskom razdoblju. Budući da je cilj ove aplikacije jednostavna evidencija streamova i procjena zarade, aplikacija koristi pojednostavljeni model temeljen na zadnjem poznatom stanju streamova.
+
+## Autor
+
+Vilibald Kovač
+FIPU 2025/2026
