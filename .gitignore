@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+is_env/
+venv/
+.venv/
+env/
+
+# VS Code lokalne postavke
+.vscode/
+
+# macOS
+.DS_Store
+
+# Flask / lokalni runtime
+instance/
+.env
+.env.*
+
+# SQLite baze
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs
+*.log

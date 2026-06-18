@@ -1,0 +1,592 @@
+[
+    {
+        "naslov": "Zaboravi na sat",
+        "izvodac": "Matija Cvek",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1200000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 3500000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Koraci u mraku",
+        "izvodac": "Marko Tolja",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 450000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 800000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Sjeverno od nas",
+        "izvodac": "Damir Kedžo",
+        "godina": 2023,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 2100000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 300000,
+                "zarada": 0.007
+            }
+        ]
+    },
+    {
+        "naslov": "Prazna ulica",
+        "izvodac": "Tony Cetinski",
+        "godina": 2022,
+        "metrike": [
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 1500000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Druga strana zida",
+        "izvodac": "Vanna",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 950000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 4000000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Miris daljine",
+        "izvodac": "Nina Badrić",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 80000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Kapi na prozoru",
+        "izvodac": "Jacques Houdek",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1300000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 2500000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Zadnji eho",
+        "izvodac": "Matija Cvek",
+        "godina": 2023,
+        "metrike": [
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 120000,
+                "zarada": 0.007
+            }
+        ]
+    },
+    {
+        "naslov": "Sjene u prolazu",
+        "izvodac": "Marko Tolja",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 3100000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 6000000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Hladni val",
+        "izvodac": "Damir Kedžo",
+        "godina": 2023,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 150000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Sve tvoje laži",
+        "izvodac": "Tony Cetinski",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1800000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 9000000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Okus pobjede",
+        "izvodac": "Vanna",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 2500000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 400000,
+                "zarada": 0.007
+            }
+        ]
+    },
+    {
+        "naslov": "Samo sekunda",
+        "izvodac": "Nina Badrić",
+        "godina": 2022,
+        "metrike": [
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 750000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Plavi horizont",
+        "izvodac": "Jacques Houdek",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 600000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 1200000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Prašina vremena",
+        "izvodac": "Matija Cvek",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1050000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Izgubljeni signal",
+        "izvodac": "Marko Tolja",
+        "godina": 2021,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 200000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Bez povratka",
+        "izvodac": "Damir Kedžo",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 3400000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 8000000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Pogled preko ramena",
+        "izvodac": "Tony Cetinski",
+        "godina": 2023,
+        "metrike": [
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 1900000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Zlatni kavez",
+        "izvodac": "Vanna",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1150000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 250000,
+                "zarada": 0.007
+            }
+        ]
+    },
+    {
+        "naslov": "Neka gori grad",
+        "izvodac": "Nina Badrić",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 90000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Staklene maske",
+        "izvodac": "Jacques Houdek",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1600000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 3000000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Novi početak",
+        "izvodac": "Matija Cvek",
+        "godina": 2020,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 500000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Zadnji ples",
+        "izvodac": "Marko Tolja",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1400000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 5000000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Ostavljeni u jeci",
+        "izvodac": "Damir Kedžo",
+        "godina": 2023,
+        "metrike": [
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 850000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Nevidljive niti",
+        "izvodac": "Tony Cetinski",
+        "godina": 2022,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 2200000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 500000,
+                "zarada": 0.007
+            }
+        ]
+    },
+    {
+        "naslov": "Kroz tvoje oči",
+        "izvodac": "Vanna",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 70000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Sve što ostaje",
+        "izvodac": "Nina Badrić",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 880000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 1900000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Mirna luka",
+        "izvodac": "Jacques Houdek",
+        "godina": 2023,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1300000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Puls noći",
+        "izvodac": "Matija Cvek",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1250000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 4100000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "U tvojim cipelama",
+        "izvodac": "Marko Tolja",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 2900000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Slijepi putnik",
+        "izvodac": "Damir Kedžo",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 50000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Strah od letenja",
+        "izvodac": "Tony Cetinski",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 750000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 2200000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Tiha predaja",
+        "izvodac": "Vanna",
+        "godina": 2023,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1950000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Na pola puta",
+        "izvodac": "Nina Badrić",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 3400000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 7000000,
+                "zarada": 0.001
+            },
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 600000,
+                "zarada": 0.007
+            }
+        ]
+    },
+    {
+        "naslov": "Zadnji krug",
+        "izvodac": "Jacques Houdek",
+        "godina": 2026,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 150000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Kula od pijeska",
+        "izvodac": "Matija Cvek",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 2050000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 5500000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Bezizlazno",
+        "izvodac": "Marko Tolja",
+        "godina": 2024,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 620000,
+                "zarada": 0.004
+            }
+        ]
+    },
+    {
+        "naslov": "Na rubu usana",
+        "izvodac": "Damir Kedžo",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 1100000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 3200000,
+                "zarada": 0.001
+            }
+        ]
+    },
+    {
+        "naslov": "Samo tvoj",
+        "izvodac": "Tony Cetinski",
+        "godina": 2023,
+        "metrike": [
+            {
+                "platforma": "Apple Music",
+                "broj_streamova": 95000,
+                "zarada": 0.007
+            }
+        ]
+    },
+    {
+        "naslov": "Vatreni zid",
+        "izvodac": "Vanna",
+        "godina": 2025,
+        "metrike": [
+            {
+                "platforma": "Spotify",
+                "broj_streamova": 4200000,
+                "zarada": 0.004
+            },
+            {
+                "platforma": "YouTube",
+                "broj_streamova": 11000000,
+                "zarada": 0.001
+            }
+        ]
+    }
+]
