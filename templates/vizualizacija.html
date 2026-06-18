@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Vizualizacija</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">StreamTrack</a>
+        <div class="navbar-nav">
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/dodaj/pjesmu">Dodaj pjesmu</a>
+            <a class="nav-link" href="/vrati/pjesme">Popis pjesama</a>
+            <a class="nav-link active" href="/vrati/pjesme/vizualizacija">Vizualizacija</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container main-box">
+    <h2>Vizualizacija podataka</h2>
+
+    <div class="chart-box">
+        <h4>Top 5 pjesama po broju streamova</h4>
+        <canvas id="topPjesme"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h4>Zarada po platformama</h4>
+        <canvas id="zaradaPlatforme"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h4>Streamovi po mjesecima</h4>
+        <canvas id="streamoviVrijeme"></canvas>
+    </div>
+</div>
+
+<script>
+let topLabels = {{ top_labels|tojson }};
+let topValues = {{ top_values|tojson }};
+let platformeLabels = {{ platforme_labels|tojson }};
+let platformeValues = {{ platforme_values|tojson }};
+let vrijemeLabels = {{ vrijeme_labels|tojson }};
+let vrijemeValues = {{ vrijeme_values|tojson }};
+
+new Chart(document.getElementById("topPjesme"), {
+    type: "bar",
+    data: {
+        labels: topLabels,
+        datasets: [{label: "Broj streamova", data: topValues}]
+    },
+    options: {responsive: true, scales: {y: {beginAtZero: true}}}
+});
+
+new Chart(document.getElementById("zaradaPlatforme"), {
+    type: "pie",
+    data: {
+        labels: platformeLabels,
+        datasets: [{label: "Zarada", data: platformeValues}]
+    },
+    options: {responsive: true}
+});
+
+new Chart(document.getElementById("streamoviVrijeme"), {
+    type: "line",
+    data: {
+        labels: vrijemeLabels,
+        datasets: [{label: "Broj streamova", data: vrijemeValues}]
+    },
+    options: {responsive: true, scales: {y: {beginAtZero: true}}}
+});
+</script>
+
+</body>
+</html>

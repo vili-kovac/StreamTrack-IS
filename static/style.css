@@ -1,0 +1,49 @@
+body {
+    background-image: url("/static/pozadina.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+}
+
+/* glavna kutija na svakoj stranici */
+.main-box {
+    background-color: rgba(0, 0, 0, 0.72);
+    margin-top: 40px;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+/* kartice na pocetnoj */
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #111;
+    border-radius: 10px;
+}
+
+/* tablica pjesama */
+.table {
+    margin-top: 20px;
+}
+
+/* kutije za grafove */
+.chart-box {
+    background-color: rgba(255, 255, 255, 0.92);
+    color: #111;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* visina grafova */
+canvas {
+    max-height: 380px;
+}
+
+/* footer na pocetnoj */
+footer {
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+}
