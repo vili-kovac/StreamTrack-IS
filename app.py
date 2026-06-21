@@ -1,13 +1,12 @@
 from flask import Flask, request, make_response, jsonify, render_template
-from pony import orm  # datoteka za rad s bazom podataka
+from pony import orm  # biblioteka za rad s bazom podataka
 from datetime import datetime
 import json
 
 db = orm.Database()  # baza podataka
-app = Flask(__name__)  # poziv konstruktora
+app = Flask(__name__)  # poziv konstruktora flask biblioteke
 
-
-# prva tablica - pjesma
+# prva (glavna) tablica
 class Pjesma(db.Entity):
     id = orm.PrimaryKey(int, auto=True)
     naslov = orm.Required(str)
@@ -25,12 +24,12 @@ class Metrika(db.Entity):
     pjesma = orm.Required("Pjesma")
 
 
-# konfiguracija baze
-db.bind(provider="sqlite", filename="database.sqlite", create_db=True)  # kreiranje baze ako ne postoji
+# konfiguracija baze podataka
+db.bind(provider="sqlite", filename="database.sqlite", create_db=True)  # kreiranje baze
 db.generate_mapping(create_tables=True)  # kreiranje tablica
 
 
-# pomocna funkcija za datum
+# pomocna funkcija za datum - pretvaranje datuma iz forme ili JSON-a u datetime objekt
 def procitaj_datum(datum):
     try:
         return datetime.fromisoformat(datum)
@@ -38,7 +37,7 @@ def procitaj_datum(datum):
         return datetime.now()
 
 
-# dodavanje jednog zapisa metrike
+# funkcija za dodavanje zapisa u tablicu metrike
 def dodaj_metriku(pjesma, podaci):
     Metrika(
         platforma=podaci["platforma"],
@@ -49,32 +48,32 @@ def dodaj_metriku(pjesma, podaci):
     )
 
 
-# povijesni model - zadnji zapis po platformi
+# funkcija za dobivanje zadnjeg zapisa po pojedinoj streaming platformi
 def zadnje_po_platformi(metrike):
-    zadnje = {}
+    zadnji_zapis = {}
 
     for m in metrike:
-        if m.platforma not in zadnje:
-            zadnje[m.platforma] = m
-        elif m.datum_izmjene > zadnje[m.platforma].datum_izmjene:
-            zadnje[m.platforma] = m
+        if m.platforma not in zadnji_zapis:
+            zadnji_zapis[m.platforma] = m
+        elif m.datum_izmjene > zadnji_zapis[m.platforma].datum_izmjene:
+            zadnji_zapis[m.platforma] = m
 
-    return zadnje
+    return zadnji_zapis
 
 
-# priprema jedne pjesme za prikaz u tablici
-def slozi_pjesmu(pjesma, metrike):
-    zadnje = zadnje_po_platformi(metrike)
+# priprema pjesme za prikaz u tablici
+def pripremi_pjesmu(pjesma, metrike):
+    zadnji = zadnje_po_platformi(metrike)
     platforme = []
     ukupno_streamova = 0
     ukupna_zarada = 0
 
-    for platforma in zadnje:
-        m = zadnje[platforma]
+    for platforma in zadnji:
+        m = zadnji[platforma]
         ukupno_streamova += m.broj_streamova
         ukupna_zarada += m.broj_streamova * m.zarada_po_streamu
-        tekst = platforma + ": " + str(m.broj_streamova)
-        tekst += " (" + m.datum_izmjene.strftime("%d.%m.%Y.") + ")"
+        tekst = platforma + ": " + str(m.broj_streamova)  # prikazuje broj streamova za posljedni datum unosa
+        tekst += " (" + m.datum_izmjene.strftime("%d.%m.%Y.") + ")"  # posljednji datum unosa
         platforme.append(tekst)
 
     return {
@@ -84,18 +83,18 @@ def slozi_pjesmu(pjesma, metrike):
         "platforme": platforme,
         "ukupno_streamova": ukupno_streamova,
         "ukupna_zarada": round(ukupna_zarada, 2),
-        "viralnost": "🔥 VIRALNO" if ukupno_streamova > 1000000 else ""
+        "viralnost": "🔥 VIRALNO" if ukupno_streamova > 1000000 else ""  # ako je pjesma skupila vise od 1000000 smatramo je viralnom
     }
 
 
-# podaci za padajuce izbornike u filterima
+# izbornici u filterima
 def get_filtere():
     platforme = []
     godine = []
     mjeseci = []
 
     with orm.db_session:
-        for m in orm.select(m for m in Metrika):
+        for m in Metrika.select():
             if m.platforma not in platforme:
                 platforme.append(m.platforma)
             if m.datum_izmjene.year not in godine:
@@ -114,25 +113,25 @@ def get_filtere():
     }
 
 
-# granica za povijesni filter
+# funkcija granice za povijesni filter
 def granica_filtera(godina, mjesec):
     if not godina:
         return None
 
-    godina = int(godina)
+    godina = int(godina)  # moramo pretvoriti string u int
 
     if not mjesec:
-        return datetime(godina + 1, 1, 1)
+        return datetime(godina + 1, 1, 1)  # ako nije odabran mjesec vec cijela godina uzima se 1.1. sljedece godine
 
     mjesec = int(mjesec)
 
     if mjesec == 12:
-        return datetime(godina + 1, 1, 1)
+        return datetime(godina + 1, 1, 1)  # jer ako je mjesec prosinac gornja granica mora biti sjecanj sljedece godine
 
     return datetime(godina, mjesec + 1, 1)
 
 
-# ruta za dodavanje nove pjesme
+# route za dodavanje nove pjesme
 @app.route("/dodaj/pjesmu", methods=["POST", "GET"])
 def dodaj_pjesmu():
     if request.method == "GET":
@@ -154,21 +153,32 @@ def dodaj_pjesmu():
     except Exception as e:
         return make_response(render_template("dodaj_pjesmu.html", greska=str(e)), 200)
 
-
-# ruta za prikaz pjesama, filtere i sortiranje
+# route za prikaz pjesama, filtere i sortiranje
 @app.route("/vrati/pjesme", methods=["GET"])
 def vrati_pjesme():
-    q = request.args.get("q", "").lower()
+    q_original = request.args.get("q", "")  # originalni tekst pretrage za prikaz u formi
+    q = q_original.lower()  # mala slova zbog za usporedbe kod pretrage
+
     platforma = request.args.get("platforma", "")
     godina = request.args.get("godina", "")
     mjesec = request.args.get("mjesec", "")
     sortiranje = request.args.get("sort", "")
+
     granica = granica_filtera(godina, mjesec)
     data = []
 
+    # pamtimo sto je korisnik odabrao u filterima i saljemo natrag u HTML da se odabrani filteri ne resetiraju
+    odabrano = {
+        "q": q_original,
+        "platforma": platforma,
+        "godina": godina,
+        "mjesec": mjesec,
+        "sort": sortiranje
+    }
+
     try:
         with orm.db_session:
-            for pjesma in orm.select(p for p in Pjesma)[:]:
+            for pjesma in Pjesma.select():
                 if q and q not in (pjesma.naslov + " " + pjesma.izvodac).lower():
                     continue
 
@@ -185,7 +195,7 @@ def vrati_pjesme():
                 if (platforma or granica) and len(metrike) == 0:
                     continue
 
-                data.append(slozi_pjesmu(pjesma, metrike))
+                data.append(pripremi_pjesmu(pjesma, metrike))
 
             if sortiranje == "streamovi":
                 data.sort(key=lambda x: x["ukupno_streamova"], reverse=True)
@@ -194,78 +204,100 @@ def vrati_pjesme():
             if sortiranje == "naslov":
                 data.sort(key=lambda x: x["naslov"])
 
-        return make_response(render_template("popis_pjesama.html", data=data, filteri=get_filtere()), 200)
+        return make_response(render_template(
+            "popis_pjesama.html",
+            data=data,
+            filteri=get_filtere(),
+            odabrano=odabrano
+        ), 200)
 
     except Exception as e:
-        return make_response(render_template("popis_pjesama.html", data=[], filteri=get_filtere(), greska=str(e)), 200)
-
-
-# ruta za vizualizaciju grafova
-@app.route("/vrati/pjesme/vizualizacija", methods=["GET"])
-def vizualizacija():
+        return make_response(render_template(
+            "popis_pjesama.html",
+            data=[],
+            filteri=get_filtere(),
+            odabrano=odabrano,
+            greska=str(e)
+        ), 200)
+        
+        
+# funkcije za vizualizacije
+# top 5 pjesama i zarada po platformi
+def get_top_pjesme_i_zarada():
     top_pjesme = []
     zarada_po_platformi = {}
+
+    with orm.db_session:
+        for pjesma in Pjesma.select():
+            podaci_pjesme = pripremi_pjesmu(pjesma, pjesma.metrike)
+            zadnje = zadnje_po_platformi(pjesma.metrike)
+
+            top_pjesme.append({
+                "naslov": podaci_pjesme["naslov"],
+                "streamovi": podaci_pjesme["ukupno_streamova"]
+            })
+
+            for platforma in zadnje:
+                m = zadnje[platforma]
+                if m.platforma not in zarada_po_platformi:
+                    zarada_po_platformi[m.platforma] = 0
+                zarada_po_platformi[m.platforma] += m.broj_streamova * m.zarada_po_streamu
+
+    top_pjesme.sort(key=lambda x: x["streamovi"], reverse=True)
+    return top_pjesme[:5], zarada_po_platformi
+
+
+# streamovi kroz vrijeme
+def get_streamovi_kroz_vrijeme():
     streamovi_po_vremenu = {}
+    zadnje_stanje = {}
 
+    with orm.db_session:
+        metrike = Metrika.select()[:]
+        metrike.sort(key=lambda m: m.datum_izmjene)
+
+        for m in metrike:
+            mjesec = m.datum_izmjene.strftime("%Y-%m")
+            kljuc = str(m.pjesma.id) + "-" + m.platforma
+            zadnje_stanje[kljuc] = m
+
+            ukupno = 0
+            for zapis in zadnje_stanje.values():
+                ukupno += zapis.broj_streamova
+
+            streamovi_po_vremenu[mjesec] = ukupno
+
+    return streamovi_po_vremenu
+
+
+# route za vizualizaciju
+@app.route("/vrati/pjesme/vizualizacija", methods=["GET"])
+def vizualizacija():
     try:
-        with orm.db_session:
-            # prvi graf - top 5 pjesama po istom izracunu kao u tablici
-            for pjesma in orm.select(p for p in Pjesma)[:]:
-                podaci_pjesme = slozi_pjesmu(pjesma, pjesma.metrike)
-                zadnje = zadnje_po_platformi(pjesma.metrike)
+        # poziv pomocnih funkcija
+        top_pjesme, zarada_po_platformi = get_top_pjesme_i_zarada()
+        streamovi_po_vremenu = get_streamovi_kroz_vrijeme()
 
-                top_pjesme.append({
-                    "naslov": podaci_pjesme["naslov"],
-                    "streamovi": podaci_pjesme["ukupno_streamova"]
-                })
-
-                for platforma in zadnje:
-                    m = zadnje[platforma]
-
-                    if m.platforma not in zarada_po_platformi:
-                        zarada_po_platformi[m.platforma] = 0
-
-                    zarada_po_platformi[m.platforma] += m.broj_streamova * m.zarada_po_streamu
-
-            # treci graf - stanje streamova kroz vrijeme
-            zadnje_stanje = {}
-            metrike = orm.select(m for m in Metrika)[:]
-            metrike.sort(key=lambda m: m.datum_izmjene)
-
-            for m in metrike:
-                mjesec = m.datum_izmjene.strftime("%Y-%m")
-                kljuc = str(m.pjesma.id) + "-" + m.platforma
-                zadnje_stanje[kljuc] = m
-                streamovi_po_vremenu[mjesec] = sum(x.broj_streamova for x in zadnje_stanje.values())
-
-        top_pjesme.sort(key=lambda x: x["streamovi"], reverse=True)
-        top_pjesme = top_pjesme[:5]
+        # priprema za HTML
+        top_labels = [p["naslov"] for p in top_pjesme]
+        top_values = [p["streamovi"] for p in top_pjesme]
 
         platforme_labels = list(zarada_po_platformi.keys())
-        platforme_values = []
-        vrijeme_labels = list(streamovi_po_vremenu.keys())
-        vrijeme_values = []
+        platforme_values = [round(zarada_po_platformi[p], 2) for p in platforme_labels]
 
-        vrijeme_labels.sort()
-
-        # drugi graf - zarada po platformama
-        for p in platforme_labels:
-            platforme_values.append(round(zarada_po_platformi[p], 2))
-
-        for v in vrijeme_labels:
-            vrijeme_values.append(streamovi_po_vremenu[v])
+        vrijeme_labels = sorted(list(streamovi_po_vremenu.keys()))
+        vrijeme_values = [streamovi_po_vremenu[v] for v in vrijeme_labels]
 
     except Exception:
-        top_pjesme = []
-        platforme_labels = []
-        platforme_values = []
-        vrijeme_labels = []
-        vrijeme_values = []
+        # ako je baza prazna, saljemo prazne liste da se stranica ne srusi
+        top_labels, top_values = [], []
+        platforme_labels, platforme_values = [], []
+        vrijeme_labels, vrijeme_values = [], []
 
     return make_response(render_template(
         "vizualizacija.html",
-        top_labels=[p["naslov"] for p in top_pjesme],
-        top_values=[p["streamovi"] for p in top_pjesme],
+        top_labels=top_labels,
+        top_values=top_values,
         platforme_labels=platforme_labels,
         platforme_values=platforme_values,
         vrijeme_labels=vrijeme_labels,
@@ -273,7 +305,7 @@ def vizualizacija():
     ), 200)
 
 
-# ruta za izmjenu pjesme i dodavanje novog zapisa metrike
+# route za izmjenu pjesme i dodavanje novog zapisa metrike
 @app.route("/pjesma/<int:pjesma_id>", methods=["PATCH"])
 def izmjeni_pjesmu(pjesma_id):
     try:
@@ -295,7 +327,7 @@ def izmjeni_pjesmu(pjesma_id):
         return make_response(jsonify({"response": "Fail", "error": str(e)}), 400)
 
 
-# ruta za brisanje pjesme i svih njezinih metrika
+# route za brisanje pjesme i svih njezinih metrika
 @app.route("/pjesma/<int:pjesma_id>", methods=["DELETE"])
 def obrisi_pjesmu(pjesma_id):
     try:
@@ -319,26 +351,35 @@ def home():
     return make_response(render_template("index.html"), 200)
 
 
-# pocetni podaci iz JSON datoteke
-@orm.db_session
+# funkcija za ubacivanje podataka
 def ubaci_pocetne_podatke():
-    if orm.select(p for p in Pjesma).count() > 0:
-        return
+    with orm.db_session:
+        koliko_pjesama_ima = Pjesma.select().count()  # provjeri koliko imamo u bazi
 
-    with open("pjesme_data.json", "r", encoding="utf-8") as f:
-        pjesme_lista = json.load(f)
+        if koliko_pjesama_ima > 0:
+            return
 
-    for p_data in pjesme_lista:
-        pjesma = Pjesma(
-            naslov=p_data["naslov"],
-            izvodac=p_data["izvodac"]
-        )
+        # citanje JSON datoteke
+        datoteka = open("pjesme_data.json", "r", encoding="utf-8")
+        pjesme_lista = json.load(datoteka)
+        datoteka.close()
 
-        for m_data in p_data["metrike"]:
-            dodaj_metriku(pjesma, m_data)
+        # prolazimo kroz pjesme iz JSON-a jednu po jednu
+        for trenutna_pjesma in pjesme_lista:
 
-    orm.commit()
-    print("Pocetni podaci iz JSON-a su ubaceni u bazu.")
+            # upisujemo novu pjesmu u bazu
+            nova_pjesma = Pjesma(
+                naslov=trenutna_pjesma["naslov"],
+                izvodac=trenutna_pjesma["izvodac"]
+            )
+
+            lista_metrika_za_ovu_pjesmu = trenutna_pjesma["metrike"]
+
+            # za tu pjesmu upisujemo sve njezine metrike
+            for jedna_metrika in lista_metrika_za_ovu_pjesmu:
+                dodaj_metriku(nova_pjesma, jedna_metrika)
+
+        print("Pocetni podaci su uspjesno ubaceni u bazu.")
 
 
 ubaci_pocetne_podatke()

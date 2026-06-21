@@ -10,6 +10,7 @@
 
 <body>
 
+    <!-- navigacija -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">StreamTrack</a>
@@ -29,42 +30,48 @@
         <div class="alert alert-danger">{{ greska }}</div>
         {% endif %}
 
+        <!-- forma za filtere - da pamti vrijednosti nakon klika na OK -->
         <form method="get" class="row g-2 mb-3">
             <div class="col-md-3">
-                <input class="form-control" name="q" placeholder="Naslov ili izvođač">
+                <input class="form-control" name="q" placeholder="Naslov ili izvođač" value="{{ odabrano.q }}">
             </div>
+
             <div class="col-md-2">
                 <select class="form-select" name="platforma">
                     <option value="">Sve platforme</option>
                     {% for p in filteri.platforme %}
-                    <option value="{{ p }}">{{ p }}</option>
+                    <option value="{{ p }}" {% if odabrano.platforma==p %}selected{% endif %}>{{ p }}</option>
                     {% endfor %}
                 </select>
             </div>
+
             <div class="col-md-2">
                 <select class="form-select" name="godina">
                     <option value="">Stanje do godine</option>
                     {% for g in filteri.godine %}
-                    <option value="{{ g }}">{{ g }}</option>
+                    <option value="{{ g }}" {% if odabrano.godina|int==g %}selected{% endif %}>{{ g }}</option>
                     {% endfor %}
                 </select>
             </div>
+
             <div class="col-md-2">
                 <select class="form-select" name="mjesec">
                     <option value="">Stanje do mjeseca</option>
                     {% for m in filteri.mjeseci %}
-                    <option value="{{ m }}">{{ m }}</option>
+                    <option value="{{ m }}" {% if odabrano.mjesec|int==m %}selected{% endif %}>{{ m }}</option>
                     {% endfor %}
                 </select>
             </div>
+
             <div class="col-md-2">
                 <select class="form-select" name="sort">
                     <option value="">Bez sortiranja</option>
-                    <option value="streamovi">Streamovi</option>
-                    <option value="zarada">Zarada</option>
-                    <option value="naslov">Naslov</option>
+                    <option value="streamovi" {% if odabrano.sort=="streamovi" %}selected{% endif %}>Streamovi</option>
+                    <option value="zarada" {% if odabrano.sort=="zarada" %}selected{% endif %}>Zarada</option>
+                    <option value="naslov" {% if odabrano.sort=="naslov" %}selected{% endif %}>Naslov</option>
                 </select>
             </div>
+
             <div class="col-md-1">
                 <button class="btn btn-primary w-100" type="submit">OK</button>
             </div>
@@ -83,6 +90,7 @@
                         <th>Akcije</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     {% for pjesma in data %}
                     <tr>
@@ -104,6 +112,7 @@
                         </td>
                     </tr>
 
+                    <!-- skriveni red za uređivanje -->
                     <tr id="uredi-{{ pjesma.id }}" style="display:none;">
                         <td colspan="7">
                             <div class="row g-2">
@@ -146,12 +155,7 @@
     <script>
         function prikaziUredi(id) {
             let red = document.getElementById("uredi-" + id);
-
-            if (red.style.display == "none") {
-                red.style.display = "table-row";
-            } else {
-                red.style.display = "none";
-            }
+            red.style.display = red.style.display == "none" ? "table-row" : "none";
         }
 
         function obrisiPjesmu(id) {

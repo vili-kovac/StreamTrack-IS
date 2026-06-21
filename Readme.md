@@ -2,7 +2,7 @@
 
 Aplikacija omogućuje nositelju glazbenih prava praćenje streamova i izračun procijenjenih tantijema za pjesme na različitim streaming platformama.
 
-Tijekom razrade projekta početni model baze je promijenjen jer se pokazalo da je za ovu aplikaciju važnije pratiti povijesno stanje streamova po platformama nego čuvati dodatne podatke koji se ne koriste u funkcionalnostima aplikacije. Zbog toga se pjesma sprema samo s osnovnim podacima, dok se svi podaci o streamovima i zaradi spremaju kroz zasebne zapise metrika.
+Tijekom razrade projekta početni model tablica je promijenjen jer se pokazalo da je za ovu aplikaciju važnije pratiti povijesno stanje streamova po platformama nego čuvati dodatne podatke koji se ne koriste u funkcionalnostima aplikacije. Zbog toga se pjesma sprema samo s osnovnim podacima, dok se svi podaci o streamovima i zaradi spremaju kroz zasebne zapise metrika.
 
 U stvarnom svijetu izračun zarade od streamova je složeniji jer izdavačke kuće, distributeri, tržišta, tip korisničke pretplate i drugi faktori mogu utjecati na konačan iznos tantijema. U ovoj aplikaciji koristi se pojednostavljeni model koji računa procijenjenu zaradu pomoću prosječne zarade po streamu za pojedinu platformu.
 
@@ -105,6 +105,7 @@ Kod dodavanja nove pjesme korisnik unosi:
 Ako korisnik ne unese datum zapisa streamova, aplikacija automatski koristi današnji datum. Time se sprječava greška kod praznog datuma i omogućuje jednostavniji unos podataka.
 
 Kod greške aplikacija ne prikazuje sirovi JSON odgovor korisniku, nego poruku greške prikazuje unutar HTML stranice.
+Za izračun zarade koristi se `float` vrijednost jer aplikacija računa procijenjenu, a ne stvarnu knjigovodstvenu zaradu. U stvarnom financijskom sustavu za precizne novčane iznose prikladnije bi bilo koristiti `Decimal`.
 
 ## Popis pjesama
 
