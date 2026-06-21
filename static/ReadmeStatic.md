@@ -1,0 +1,1 @@
+Frontend koristi HTML, CSS, Bootstrap i čisti JavaScript. Bootstrap i Chart.js su preuzeti lokalno i nalaze se u `static` direktoriju, kako aplikacija ne bi ovisila o vanjskim servisima. Aplikacija ne koristi vanjske web servise ili API-je za dohvaćanje podataka.
