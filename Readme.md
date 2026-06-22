@@ -2,16 +2,18 @@
 
 Aplikacija omogućuje nositelju glazbenih prava praćenje streamova i izračun procijenjenih tantijema za pjesme na različitim streaming platformama. Primarno je namijenjena individualnom korisniku koji je autor ili koautor pjesama, odnosno nositelj autorskih prava, ili izvođač koji želi pratiti slušanost svojih pjesama i procijenjenu zaradu od streamova.
 
-
 Tijekom razrade projekta početni model tablica je minimalno promijenjen jer se pokazalo da je za ovu aplikaciju važnije pratiti povijesno stanje streamova po platformama nego čuvati dodatne podatke koji se ne koriste u funkcionalnostima aplikacije. Zbog toga se pjesma sprema samo s osnovnim podacima, dok se svi podaci o streamovima i zaradi spremaju kroz zasebne zapise u tablici `Metrika`.
 
 ## Sažetak
 
-Korisnik može vidjeti pjesme i datum na koji je zabilježen broj streamova u jednoj tablici (`READ`) te filtrirati unose po naslovu, izvođaču, platformi, godini i mjesecu. Korisnik može dodati novu pjesmu (`CREATE`), urediti naziv pjesme, izvođača i dodati novo stanje streamova (`UPDATE`) te obrisati pjesmu zajedno sa svim njezinim zapisima metrika (`DELETE`). Time su pokrivene osnovne CRUD funkcionalnosti.
+Korisnik može vidjeti pjesme i datum na koji je zabilježen broj streamova u jednoj tablici (`READ`) te filtrirati unose po naslovu, izvođaču, platformi, godini i mjesecu. Korisnik može dodati novu pjesmu i prvi zapis streamova (`CREATE`), urediti naziv pjesme, izvođača i dodati novo stanje streamova (`UPDATE`) te obrisati pjesmu zajedno sa svim njezinim zapisima metrika (`DELETE`). Time su pokrivene osnovne CRUD funkcionalnosti.
 
-Dodatne funkcije omogućuju pregled procijenjene zarade, označavanje viralnih pjesama, filtriranje prema povijesnom stanju streamova te vizualizaciju podataka kroz grafove. Vizualizacija prikazuje top 5 pjesama po streamovima, procijenjenu zaradu po platformama i promjenu ukupnog stanja streamova kroz vrijeme.
+Kod dodavanja i ažuriranja streamova korisnik odabire jednu od podržanih streaming platformi: Spotify, YouTube ili Apple Music. Za svaku platformu moguće je voditi zasebne zapise streamova, što omogućuje odvojeno praćenje stanja po platformama.
+
+Dodatne funkcije omogućuju pregled procijenjene zarade, automatsko označavanje pjesme kao viralne ako prijeđe ukupno 1 000 000 streamova na svim platformama, filtriranje prema povijesnom stanju streamova te vizualizaciju podataka kroz grafove. Vizualizacija prikazuje top 5 pjesama po streamovima, procijenjenu zaradu po platformama i promjenu ukupnog stanja streamova kroz vrijeme.
 
 U nastavku datoteke može se pronaći detaljan opis svih funkcionalnosti.
+
 
 ## Use case
 
@@ -60,6 +62,8 @@ http://localhost:5001
 * Verzijsko praćenje: GitHub
 
 Bootstrap i Chart.js koriste se lokalno iz `static` direktorija, bez korištenja vanjskih web servisa ili API-ja za dohvaćanje podataka.
+
+--- 
 
 ## Detaljni opis funkcionalnosti
 
@@ -133,6 +137,7 @@ Popis pjesama prikazuje tablicu sa sljedećim informacijama:
 Ukupni broj streamova računa se tako da se za svaku platformu uzima zadnje poznato stanje streamova. Ako pjesma prijeđe ukupno 1 000 000 streamova, dobiva status `VIRALNO`.
 
 Kod uređivanja pjesme moguće je promijeniti naslov i izvođača, ali unos novog broja streamova ne briše stare podatke. Novi broj streamova sprema se kao novo povijesno stanje za odabranu platformu i datum.
+Iako bi bilo logično da svaki novi zapis ima više streamova od posljednjeg, nisu postavljena dodatna ograničenja za veću fleksibilnost kod uređivanja podataka.
 
 Kod brisanja pjesme brišu se i svi zapisi metrika koji pripadaju toj pjesmi.
 
