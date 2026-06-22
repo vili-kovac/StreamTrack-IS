@@ -1,6 +1,7 @@
 # StreamTrack
 
-Aplikacija omogućuje nositelju glazbenih prava praćenje streamova i izračun procijenjenih tantijema za pjesme na različitim streaming platformama.
+Aplikacija omogućuje nositelju glazbenih prava praćenje streamova i izračun procijenjenih tantijema za pjesme na različitim streaming platformama. Primarno je namijenjena individualnom korisniku koji je autor ili koautor pjesama, odnosno nositelj autorskih prava, ili izvođač koji želi pratiti slušanost svojih pjesama i procijenjenu zaradu od streamova.
+
 
 Tijekom razrade projekta početni model tablica je minimalno promijenjen jer se pokazalo da je za ovu aplikaciju važnije pratiti povijesno stanje streamova po platformama nego čuvati dodatne podatke koji se ne koriste u funkcionalnostima aplikacije. Zbog toga se pjesma sprema samo s osnovnim podacima, dok se svi podaci o streamovima i zaradi spremaju kroz zasebne zapise u tablici `Metrika`.
 
